@@ -1,0 +1,22 @@
+  <form>
+    <span class="user-auth-title">Unverbildlichen Zugang erstellen</span>
+    <mat-form-field class="input-full-width">
+      <input #email matInput type="email" placeholder="E-mail">
+    </mat-form-field>
+    <mat-form-field class="input-full-width">
+      <input #password matInput type="password" placeholder="Passwort">
+    </mat-form-field>
+    <mat-form-field class="input-full-width">
+      <input #passwordConfirm matInput type="password" placeholder="Passwort wiederholen">
+    </mat-form-field>
+    <span class="user-warning" *ngIf="warning">{{warning}}</span>
+    <span class="user-success" *ngIf="success">{{success}}</span>
+    <br>
+    <br>
+    <button mat-raised-button color="primary" (click)="register(email.value, password.value, passwordConfirm.value)">Registrieren</button>
+    <br>
+    <br>
+    <br>
+    <span>Sie haben bereits einen Zugang?
+      <button mat-raised-button color="primary" (click)="goToLogin()">Login</button></span>
+</form>

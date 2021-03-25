@@ -1,0 +1,21 @@
+<form>
+  <span class="user-auth-title">Anmelden</span>
+  <mat-form-field class="input-full-width">
+    <input matInput #email type="email" placeholder="E-Mail">
+  </mat-form-field>
+  <mat-form-field class="input-full-width">
+    <input matInput #password type="password" placeholder="Passwort">
+  </mat-form-field>
+  <span class="user-warning" *ngIf="warning">{{warning}}</span>
+  <span class="user-success" *ngIf="success">{{success}}</span>
+  <br>
+  <br>
+  <button mat-raised-button color="primary" (click)="login(email.value, password.value)">Einloggen</button>
+  <button mat-raised-button color="primary" id="forgottenPassword" (click)="openForgottenPasswordDialog();">Passwort vergessen?</button>
+  <br>
+  <br>
+  <br>
+  <span>Noch nicht registriert?
+    <button mat-raised-button color="primary" (click)="goToRegister()">Registrieren</button>
+  </span>
+</form>

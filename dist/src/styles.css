@@ -1,0 +1,102 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+*{
+   font-family: Arial, Helvetica, sans-serif !important;
+   }
+body{
+    overflow: hidden;
+}
+.mat-select-panel{
+    max-height: 50vh !important;
+}
+.selected{
+    height: calc(50% - 42px) !important;
+}
+.unselected{
+    height: calc(100% - 42px);
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3px grey;
+    border-radius: 0px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {    
+    border-radius: 3px;
+    background-color: rgba(97, 85, 89, 0.6);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #615559; 
+}
+
+.user-auth-title{
+    font-size: 25px;
+}
+
+.user-auth-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-auth-card{
+    text-align: center;
+    top: 200px;
+    width: 400px;
+}
+
+.input-full-width {
+    width: 100%;
+  }
+
+.user-warning{
+    color: red;
+}
+
+.user-success{
+    color: green;
+}
+iframe{
+    width: 750px;
+    height: 500px;
+    overflow: hidden;
+}
+
+@media only screen and (max-width:650px) and (orientation: portrait){
+    iframe{
+        width: 250px;
+        height: 200px;
+        overflow: hidden;
+    }
+}
+
+@media only screen and (min-width:650px) and (max-width:799px) and (orientation: portrait){
+    iframe{
+        width: 560px;
+        height: 400px;
+        overflow: hidden;
+    }
+}
+
+@media only screen and (max-width:650px) and (orientation: landscape){
+    iframe{
+        width: 450px;
+        height: 200px;
+        overflow: hidden;
+    }
+}
+
+@media only screen and (max-width:400px){
+    iframe{
+        width: 235px;
+        height: 200px;
+        overflow: hidden;
+    }
+}

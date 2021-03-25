@@ -1,0 +1,42 @@
+<div style="width: 100%; text-align:right;">
+    <button style="background: transparent;border: none;font-weight: 900;font-size: 20px;color: #1B3443;" (click)="closeDialog()">X</button>
+</div>
+<p>
+    <strong>
+        <u>Bedienung der 3D Ansicht</u>
+    </strong>
+</p>
+<p>1 - Zoomen mit dem Mausrad.</p>
+<p>2 - Drehen mit gedrückter Maustaste.</p>
+<p>3 - Bewegen mit den Pfeiltasten auf der Tastatur.</p>
+
+<a id="video-link" (click)="openVideoTutorial()">Bitte sehen sie sich hier ein kurzes Video an. Es erklärt die Bedienung und den Ablauf.</a>
+<br>
+<br>
+<div style="width:100%; text-align:center">
+    <button mat-raised-button color="primary" (click)="closeDialog();">Schließen</button>
+</div>
+
+<style>
+    #video-link {
+        text-decoration: underline;
+        color: #0645AD;
+        cursor: pointer;
+    }
+
+    #video-link:link {
+        color: red;
+    }
+
+    #video-link:visited {
+        color: purple;
+    }
+
+    #video-link:hover {
+        color: #3366BB;
+    }
+
+    #video-link:active {
+        color: #0645AD;
+    }
+</style>

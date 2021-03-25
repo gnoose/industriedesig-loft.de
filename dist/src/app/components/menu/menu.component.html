@@ -1,0 +1,187 @@
+<mat-card *ngIf="this.uiService.data" class="right" id="user-panel">
+  <mat-card-content>
+    <ng-container *ngIf="currentSiggnedUser">
+      <span>Angemeldet als: {{currentSiggnedUser}}</span>
+      <br>
+      <br>
+      <button mat-raised-button color="primary" class="repositionUserButtons" style="position:absolute; right:124px" (click)="this.uiService.php.logout()">Abmelden</button>
+      <button mat-raised-button color="primary" class="repositionUserButtons" style="position:absolute; right:2px; padding-left: 10px; padding-right: 10px;" (click)="showVideoTutorial()">Videoanleitung</button>
+
+      <br>
+    </ng-container>
+    <ng-container *ngIf="!currentSiggnedUser">
+      <button mat-raised-button color="primary" style="position:absolute; top:10px; right:124px;" (click)="login()">Anmelden</button>
+      <button mat-raised-button color="primary" style="position:absolute; top:10px; right:2px; padding-left: 10px; padding-right: 10px;" (click)="showVideoTutorial()">Videoanleitung</button>
+      <br>
+    </ng-container>
+
+    <h4>Unsere Klassiker:</h4>
+    <mat-form-field class="full-width">
+      <mat-label>Projektliste auswählen</mat-label>
+      <mat-select [(value)]="selectedProjectsList">
+        <mat-option *ngIf="currentSiggnedUser" value="userProjects" (click)="changeProjectList('userProjects')">Meine Projekte</mat-option>
+        <mat-option value="default" (click)="changeProjectList('default')">Standard Produkte</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-grid-list cols="1" rowHeight="1:1">
+      <mat-grid-tile *ngFor="let value of selectedProjectsList === 'default' ? this.uiService.data['Projects'] : this.uiService.userProjects">
+        <div (click)="select(value)">
+          <img [src]="value.thumbnailPath" class="thumb">
+          <h5>{{value.name}}</h5>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>
+
+
+<mat-card *ngIf="this.uiService.selectedPlate && this.uiService.selectedLegs" class="bottom-left" id="user-projects">
+  <h4>Konfiguration für später speichern:</h4>
+  <mat-form-field class="example-full-width">
+    <input #projectName matInput placeholder="Eindeutige Bezeichnung vergeben" style="width: 160px;" (input)="setProjectName($event.target.value)">
+  </mat-form-field>
+   <br>
+  <span class="user-warning" *ngIf="this.uiService.saveStatusError">{{this.uiService.saveStatusError}}</span>
+  <span class="user-success" *ngIf="this.uiService.saveStatusSuccess">{{this.uiService.saveStatusSuccess}}</span>
+  <br>
+  <button mat-raised-button color="primary" (click)="this.saveProject(projectName.value, true)">Speichern</button>
+</mat-card>
+
+
+<mat-card *ngIf="this.uiService.selectedPlate && this.uiService.selectedLegs" class="top-right" style="direction: rtl;">
+  <mat-card-content style="direction: ltr;">
+    <h4>Preis:
+      <span style="font-size: 11px;font-weight: 100;"> Gestell: {{this.uiService.price.legs}}, Platte: {{this.uiService.price.plates}}, Oberfläche: {{this.uiService.price.platesFinishing}}
+      </span> = &#8364; {{this.uiService.price.total}}</h4>
+      Inkl. MwSt.
+  </mat-card-content>
+</mat-card>
+
+
+<mat-card class="middle-right" style="direction: rtl;" *ngIf="this.uiService.selectedPlate" id="plates-view">
+  <mat-card-content style="direction: ltr;">
+    <h4>Tischplatte - Eigenschaften festlegen:</h4>
+    <mat-select style="max-height: 540px !important" [(value)]="this.uiService.selectedPlateName">
+      <mat-option *ngFor="let frt of this.uiService.availablePlates" class="lists" [value]="frt.name" (click)="this.uiService.load('plate', frt)">
+        <img class="small-thumb" src="{{frt.thumbnailPath}}"> {{frt.name}}
+      </mat-option>
+    </mat-select>
+
+    <h4>Maße:</h4>
+    <mat-form-field class="third-width" *ngIf="this.uiService.selectedPlate.length">
+      <input matInput type="number" step="{{this.uiService.selectedPlate.lengthStep}}" min="{{this.uiService.selectedPlate.lengthMin}}"
+        max="{{this.uiService.selectedPlate.lengthMax}}" [value]="this.uiService.selectedPlate.length" (input)="plateChanged('length', $event)"
+        placeholder="Länge (cm)">
+    </mat-form-field>
+
+    <mat-form-field class="third-width" *ngIf="this.uiService.selectedPlate.width">
+      <input matInput type="number" step="{{this.uiService.selectedPlate.widthStep}}" min="{{this.uiService.selectedPlate.widthMin}}"
+        max="{{this.uiService.selectedPlate.widthMax}}" [value]="this.uiService.selectedPlate.width" (input)="plateChanged('width', $event)"
+        placeholder="Breite (cm)">
+    </mat-form-field>
+
+    <mat-form-field class="third-width" *ngIf="this.uiService.selectedPlate.diameter">
+      <input matInput type="number" step="{{this.uiService.selectedPlate.diameterStep}}" min="{{this.uiService.selectedPlate.diameterMin}}"
+        max="{{this.uiService.selectedPlate.diameterMax}}" [value]="this.uiService.selectedPlate.diameter" (input)="plateChanged('diameter', $event)"
+        placeholder="Durchmesser (cm)">
+    </mat-form-field>
+
+    <h4>Dicke:</h4>
+    <mat-select [(value)]="this.uiService.selectedPlate.thickness" *ngIf="this.uiService.selectedPlate.thickness">
+      <mat-option *ngFor="let thick of this.uiService.selectedPlate.thicknessOptions" [value]="thick" (click)="changeThickness(thick)">{{thick}} cm
+      </mat-option>
+    </mat-select>
+
+    <h4>Material</h4>
+    <mat-select [(value)]="this.uiService.selectedPlate.material" style="max-height: 540px !important">
+      <mat-option *ngFor="let mat of this.uiService.plateAvailableMaterials" [value]="mat.name" (click)="changeMaterial('plate',mat.name)"
+        class="lists">
+        <img class="small-thumb" src="{{mat.thumbnail}}"> {{mat.name}}
+      </mat-option>
+    </mat-select>
+
+    <h4>Kanten</h4>
+    <mat-select [(value)]="this.uiService.selectedPlate.edge">
+      <mat-option *ngFor="let edge of this.uiService.selectedPlate.edgeOptions" [value]="edge" (click)="changeEdge('plate',edge)">{{edge}}</mat-option>
+    </mat-select>
+
+    <!-- <h4>Plate Extensions (not working)</h4>
+    <mat-select [(value)]="selectedPlate.extension">
+      <mat-option *ngFor="let ext of selectedPlate.extensionOptions" [value]="ext">{{ext}}</mat-option>
+    </mat-select> -->
+
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="bottom-right" style="direction: rtl;" *ngIf="this.uiService.selectedLegs" id="legs-view">
+  <mat-card-content style="direction: ltr;">
+    <h4>Gestell - Eigenschaften festlegen:</h4>
+    <mat-select style="max-height: 540px !important" [(value)]="this.uiService.selectedLegsName">
+      <mat-option *ngFor="let frb of this.uiService.availableLegs" class="lists" [value]="frb.name" (click)="this.uiService.load('leg', frb)">
+        <img class="small-thumb" src="{{frb.thumbnailPath}}"> {{frb.name}}
+      </mat-option>
+    </mat-select>
+
+    <h4>Maße:</h4>
+    <mat-form-field class="third-width" *ngIf="this.uiService.selectedLegs.length">
+      <input matInput type="number" step="{{this.uiService.selectedLegs.lengthStep}}" min="{{this.uiService.selectedLegs.xOffset}}"
+        max="{{this.uiService.selectedPlate.length ? this.uiService.selectedPlate.length : this.uiService.selectedPlate.diameter}}"
+        [value]="this.uiService.selectedLegs.length" (input)="legsChanged('length', $event)" placeholder="Länge (cm)">
+    </mat-form-field>
+
+    <mat-form-field class="third-width" *ngIf="this.uiService.selectedLegs.width">
+      <input matInput type="number" step="{{this.uiService.selectedLegs.widthStep}}" min="{{this.uiService.selectedLegs.widthMin}}"
+        max="{{this.uiService.selectedPlate.width ? this.uiService.selectedPlate.width : this.uiService.selectedPlate.diameter / 2}}"
+        [value]="this.uiService.selectedLegs.width" (input)="legsChanged('width', $event)" placeholder="Breite (cm)">
+    </mat-form-field>
+
+    <mat-form-field class="third-width" *ngIf="this.uiService.selectedLegs.radius">
+      <input matInput type="number" step="1" min="{{this.uiService.selectedLegs.xOffset}}" max="{{this.uiService.selectedPlate.diameter ? this.uiService.selectedPlate.diameter : this.uiService.selectedPlate.width }}"
+        [value]="this.uiService.selectedLegs.radius" (input)="legsChanged('radius', $event)" placeholder="Durchmesser (cm)">
+    </mat-form-field>
+
+    <mat-form-field class="third-width" *ngIf="this.uiService.selectedLegs.height">
+      <input matInput type="number" step="{{this.uiService.selectedLegs.heightStep}}" min="{{this.uiService.selectedLegs.heightMin}}"
+        max="{{this.uiService.selectedPlate.heightMax}}" [value]="this.uiService.selectedLegs.height" (input)="legsChanged('height', $event); plateChanged('height', $event)"
+        placeholder="Höhe (cm)">
+    </mat-form-field>
+
+    <mat-form-field class="third-width" *ngIf="this.uiService.selectedLegs.xOffset">
+      <input matInput type="number" step="1" min="{{this.uiService.selectedLegs.xOffsetMin}}" max="{{this.uiService.selectedPlate.length ? this.uiService.selectedPlate.length : this.uiService.selectedPlate.diameter / 2}}"
+        [value]="this.uiService.selectedLegs.xOffset" (input)="legsChanged('xOffset', $event)" placeholder="X Versatz (cm)">
+    </mat-form-field>
+
+    <mat-form-field class="third-width" *ngIf="this.uiService.selectedLegs.yOffset">
+      <input matInput type="number" step="1" min="{{this.uiService.selectedLegs.yOffsetMin}}" max="{{this.uiService.selectedPlate.width ? this.uiService.selectedPlate.width : this.uiService.selectedPlate.diameter / 2}}"
+        [value]="this.uiService.selectedLegs.yOffset" (input)="legsChanged('yOffset', $event)" placeholder="Y Offset (cm)">
+    </mat-form-field>
+
+    <h4>Material</h4>
+    <mat-select [(value)]="this.uiService.selectedLegs.material">
+      <mat-option *ngFor="let lmat of this.uiService.legsAvailableMaterials" [value]="lmat.name" (click)="changeMaterial('leg',lmat.name)"
+        class="lists">
+        <img class="small-thumb" src="{{lmat.thumbnail}}"> {{lmat.name}}
+      </mat-option>
+    </mat-select>
+  </mat-card-content>
+</mat-card>
+
+<ng-container *ngIf="currentSiggnedUser">
+  <button mat-raised-button color="primary" class="buttonDeleteThisProject" (click)="openDeleteDialogBox()"> Löschen Sie dieses Projekt </button>
+</ng-container>
+
+<ng-container *ngIf="this.uiService.currentSelectedProject">
+  <p *ngIf="this.uiService.isSavedStatus" class="isSavedStatus" style="color: red;">{{this.uiService.isSavedStatus}}</p>
+  <button mat-raised-button color="primary" class="buttonSendProjectToUs" (click)="openSendToEmailDialogBox()">Senden/Speich um ein Angebot zu erhalten</button>
+</ng-container>
+
+<mat-card class="bottom-mobile">
+  <mat-card-content>
+    <button mat-raised-button color="primary" [ngClass]="(clickedButton === 1)?'button-low-highlight':'button-low'" (click)="show3DView()">3D Ansicht</button>
+    <button mat-raised-button color="primary" [ngClass]="(clickedButton === 2)?'button-low-highlight':'button-low'" (click)="showTableView()">Tabelleneinstellung</button>
+    <button mat-raised-button color="primary" [ngClass]="(clickedButton === 3)?'button-low-highlight':'button-low'" (click)="showProjectsView()">Projektansicht</button>
+  </mat-card-content>
+</mat-card>
+
+
+<!--  style="width: 35%;margin-left: 10px;padding-left:10px;position:absolute; top:140px; left:8px;" -->

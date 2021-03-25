@@ -1,0 +1,10 @@
+#forgottenPassword{
+    margin-left: 20px;
+}
+
+@media only screen and (max-width:400px){
+    #forgottenPassword{
+        margin-left: 0px;
+        margin-top: 5px;
+    }
+}

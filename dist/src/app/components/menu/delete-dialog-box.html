@@ -1,0 +1,13 @@
+<div style="width: 100%; text-align:right;">
+    <button style="background: transparent;border: none;font-weight: 900;font-size: 20px;color: #1B3443;" (click)="closeDialog()">X</button>
+</div>
+<div style="width:100%; text-align:center;">
+    <h3>Möchten Sie dieses Projekt löschen?</h3>
+    <p *ngIf="data['scope'].uiService.deleteStatus" style="color: green;">{{data['scope'].uiService.deleteStatus}}</p>
+    <br>
+
+    <div style="display: flex; justify-content:space-around;">
+        <button mat-raised-button color="primary" (click)="confirmDialog()">Ja</button>
+        <button mat-raised-button color="primary" (click)="closeDialog()">Nein</button>
+    </div>
+</div>

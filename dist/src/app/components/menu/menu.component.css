@@ -1,0 +1,589 @@
+.higher {
+  max-height: 540px !important;
+}
+.small-thumb {
+  height: 151px;
+  top: 8px;
+  position: relative;
+}
+.lists {
+  height: 170px !important;
+}
+.right {
+  z-index: 2;
+  position: absolute;
+  width: 300px;
+  height: calc(80% - 42px);
+  top: 5px;
+  right: 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.bottom-left {
+  position: absolute;
+  width: 300px;
+  bottom: 7px;
+  right: 5px;
+  height: calc(20% - 38px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 2;
+}
+
+.middle-right {
+  position: absolute;
+  width: 300px;
+  top: 65px;
+  left: 5px;
+  height: calc(50% - 95px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 2;
+}
+.top-right {
+  position: absolute;
+  width: 300px;
+  top: 5px;
+  left: 5px;
+  height: 25px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  z-index: 2;
+}
+.disabled {
+  pointer-events: none;
+  opacity: 0.1;
+}
+.bottom-right {
+  position: absolute;
+  width: 300px;
+  bottom: 7px;
+  left: 5px;
+  height: calc(50% - 44px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 2;
+}
+.bottom-right > button {
+  width: 35%;
+  margin-left: 10px;
+  padding-left: 10px;
+  position: absolute;
+  top: 140px;
+  left: 8px;
+}
+.full-width {
+  width: 100%;
+}
+.third-width {
+  width: 30%;
+  margin-right: 3%;
+}
+.half-width {
+  width: 48%;
+  margin-right: 2%;
+}
+h5 {
+  width: 100%;
+  text-align: left;
+  left: 15px;
+  position: relative;
+  top: -40px;
+  font-size: 16px;
+  font-weight: 100;
+  pointer-events: none;
+}
+.thumb {
+  width: 256px;
+  top: 20px;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  opacity: 1;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+.thumb:hover {
+  opacity: 0.5;
+}
+.bottom-mobile {
+  display: none;
+}
+.button-low {
+  width: 31%;
+  margin-right: 2%;
+  font-size: 64%;
+}
+.button-low-highlight {
+  width: 31%;
+  margin-right: 2%;
+  background-color: #427391;
+  font-size: 64%;
+}
+
+.buttonDeleteThisProject {
+  position: absolute;
+  bottom: 10px;
+  left: 25%;
+}
+.isSavedStatus {
+  position: absolute;
+  bottom: 35px;
+  right: 25%;
+}
+.buttonSendProjectToUs {
+  position: absolute;
+  bottom: 10px;
+  right: 25%;
+}
+
+.repositionUserButtons {
+  top: 40px;
+}
+.bottom-left > button{
+  position: absolute;
+  top: 48pt;
+  right: 10pt;
+}
+
+@media only screen and (max-width: 1380px) and (min-width: 1200px) {
+  .buttonDeleteThisProject {
+    left: 30%;
+  }
+  .isSavedStatus {
+    right: 30%;
+  }
+  .buttonSendProjectToUs {
+    right: 30%;
+  }
+ }
+@media only screen and (max-width: 1200px) and (min-width: 600px) {
+  .right {
+    z-index: 2;
+    width: 200px;
+  }
+  .bottom-left {
+    width: 200px;
+  }
+  .top-right {
+    width: 200px;
+  }
+  .middle-right {
+    width: 200px;
+  }
+  .bottom-right {
+    width: 200px;
+  }
+  .thumb {
+    width: 200px;
+  }
+  .bottom-left > button {
+    width: 55%;
+  }
+  .repositionUserButtons {
+    top: 55px;
+  }
+  .bottom-left > button{
+    position: relative;
+    top:0;
+    left:10pt;
+  }
+}
+@media only screen and (max-width: 1050px) and (min-width: 816px) {
+  .isSavedStatus {
+    left: 39.4%;
+    bottom: 80px;
+  }
+  .buttonSendProjectToUs{
+    position: absolute;
+    bottom: 10px;
+    left: 32.65%;
+  }
+  .buttonDeleteThisProject{
+    position: absolute;
+    bottom: 50px;
+    left: 37%;
+  }
+}
+@media only screen and (max-width:815px) and (min-width:700px){
+  .buttonSendProjectToUs{
+    position: absolute;
+    font-size: x-small;
+    bottom: 10px;
+    left: 34.65%;
+  }
+  .buttonDeleteThisProject{
+    position: absolute;
+    bottom: 50px;
+    font-size: x-small;
+    left: 39%;
+  }
+}
+@media only screen and (max-width: 700px) and (min-width: 600px) {
+  .isSavedStatus {
+    left: 39.4%;
+    bottom: 80px;
+  }
+  .buttonSendProjectToUs {
+    left: 35.2%;
+    bottom: 10px;
+    font-size: xx-small;
+  }
+  .buttonDeleteThisProject {
+    left: 39.6%;
+    bottom: 50px;
+    font-size:xx-small;
+  }
+}
+@media only screen and (max-width: 650px) and (min-width: 601px) {
+  .isSavedStatus {
+    font-size: 12px;
+    left: 40%;
+    bottom: 80px;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+  .buttonSendProjectToUs {
+    font-size: 12px;
+    left: 37%;
+    bottom: 7px;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size:xx-small;
+  }
+  .buttonDeleteThisProject {
+    font-size: 12px;
+    left: 42.25%;
+    bottom: 47px;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size:xx-small;
+  }
+}
+
+@media only screen and (max-width: 600px) and (min-width: 451px) {
+  .middle-right {
+    position: absolute;
+    width: 90%;
+    top: 65px;
+    left: 1.5px;
+    height: calc(50% - 95px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 2;
+    display: none;
+  }
+  .bottom-right {
+    position: absolute;
+    width: 90%;
+    top: calc(50% + 5px);
+    left: 1.5px;
+    height: calc(50% - 108px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 2;
+    display: none;
+  }
+  .top-right {
+    position: absolute;
+    width: 90%;
+    top: 5px;
+    left: 2px;
+    height: 25px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    z-index: 2;
+  }
+  .right {
+    z-index: 2;
+    display: none;
+    position: absolute;
+    width: 90%;
+    height: calc(70% - 100px);
+    top: 65px;
+    right: 1.5px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .bottom-left {
+    display: none;
+    position: absolute;
+    width: 90%;
+    top: calc(70% - 1px);
+    right: 1.5px;
+    height: calc(20% - 38px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 2;
+  }
+  .bottom-mobile {
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 90%;
+    left: 1.5px;
+  }
+  .isSavedStatus {
+    position: absolute;
+    left: 60%;
+    bottom: 88%;
+    height: auto;
+  }
+  .buttonSendProjectToUs {
+    position: absolute;
+    margin-top: 45pt;
+    bottom: auto;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: inherit;
+    left: 21%;
+  }
+  .buttonDeleteThisProject {
+    position: absolute;
+    bottom: auto;
+    height: auto;
+    left: 30.5%;
+    margin-top: 76pt;
+    font-size: inherit;
+  }
+}
+@media only screen and (max-width: 450px) and (min-width: 376px) {
+  .middle-right {
+    position: absolute;
+    width: 90%;
+    top: 65px;
+    left: 1.5px;
+    height: calc(50% - 95px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 2;
+    display: none;
+  }
+  .bottom-right {
+    position: absolute;
+    width: 90%;
+    top: calc(50% + 5px);
+    left: 1.5px;
+    height: calc(50% - 108px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 2;
+    display: none;
+  }
+  .top-right {
+    position: absolute;
+    width: 90%;
+    top: 5px;
+    left: 2px;
+    height: 25px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    z-index: 2;
+  }
+  .right {
+    z-index: 2;
+    display: none;
+    position: absolute;
+    width: 90%;
+    height: calc(70% - 100px);
+    top: 65px;
+    right: 1.5px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .bottom-left {
+    display: none;
+    position: absolute;
+    width: 90%;
+    top: calc(70% - 1px);
+    right: 1.5px;
+    height: calc(20% - 38px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 2;
+  }
+  .bottom-mobile {
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 90%;
+    left: 1.5px;
+  }
+  .isSavedStatus {
+    position: absolute;
+    top: 60%;
+    bottom: auto;
+    height: auto;
+    z-index: 1;
+  }
+  .buttonSendProjectToUs {
+    position: absolute;
+    margin-top: 45pt;
+    left:13%;
+    bottom: auto;
+    height: auto;
+    z-index: 1;
+  }
+  .buttonDeleteThisProject {
+    position: absolute;
+    left: 25.5vw;
+    top: 81pt;
+    bottom: auto;
+    height: auto;
+    z-index: 1;
+  }
+}
+@media only screen and (max-width: 375px) and (min-width: 351px) {
+  .middle-right {
+    position: absolute;
+    width: 90%;
+    top: 65px;
+    left: 1.5px;
+    height: calc(50% - 95px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 2;
+    display: none;
+  }
+  .bottom-right {
+    position: absolute;
+    width: 90%;
+    top: calc(50% + 5px);
+    left: 1.5px;
+    height: calc(50% - 108px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 2;
+    display: none;
+  }
+  .top-right {
+    position: absolute;
+    width: 90%;
+    top: 5px;
+    left: 2px;
+    height: 25px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    z-index: 2;
+  }
+  .right {
+    z-index: 2;
+    display: none;
+    position: absolute;
+    width: 90%;
+    height: calc(70% - 100px);
+    top: 65px;
+    right: 1.5px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .bottom-left {
+    display: none;
+    position: absolute;
+    width: 90%;
+    top: calc(70% - 1px);
+    right: 1.5px;
+    height: calc(20% - 38px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 2;
+  }
+  .bottom-mobile {
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 90%;
+    left: 1.5px;
+  }
+  .buttonSendProjectToUs {
+    margin-top: 45pt;
+    bottom: auto;
+    left: 7.7%;
+  }
+  .buttonDeleteThisProject {
+    bottom: auto;
+    margin-top: 76pt;
+    left: 21%;
+  }
+}
+@media only screen and (max-width: 350px) {
+  .middle-right {
+    position: absolute;
+    width: 90%;
+    top: 65px;
+    left: 1.5px;
+    height: calc(50% - 95px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 2;
+    display: none;
+  }
+  .bottom-right {
+    position: absolute;
+    width: 90%;
+    top: calc(50% + 5px);
+    left: 1.5px;
+    height: calc(50% - 108px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 2;
+    display: none;
+  }
+  .top-right {
+    position: absolute;
+    width: 90%;
+    top: 5px;
+    left: 2px;
+    height: 25px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    z-index: 2;
+  }
+  .right {
+    z-index: 2;
+    display: none;
+    position: absolute;
+    width: 90%;
+    height: calc(70% - 100px);
+    top: 65px;
+    right: 1.5px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .bottom-left {
+    display: none;
+    position: absolute;
+    width: 90%;
+    top: calc(70% - 1px);
+    right: 1.5px;
+    height: calc(20% - 38px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 2;
+  }
+  .bottom-mobile {
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 90%;
+    left: 1.5px;
+  }
+  .buttonSendProjectToUs {
+    position: absolute;
+    margin-top: 45pt;
+    left: 3vw;
+    bottom: auto;
+    height: auto;
+    z-index: 1;
+  }
+  .buttonDeleteThisProject {
+    margin-top: 76pt;
+    bottom: auto;
+    left: 20.5%;
+  }
+}

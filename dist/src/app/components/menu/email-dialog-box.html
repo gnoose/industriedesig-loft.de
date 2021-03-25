@@ -1,0 +1,36 @@
+<div style="width: 100%; text-align:right;">
+    <button style="background: transparent;border: none;font-weight: 900;font-size: 20px;color: #1B3443;"
+        (click)="closeDialog()">X</button>
+</div>
+
+<div #emailDialogBox style="width:100%; text-align:center;">
+    <div style="width: 100%; height: 20%; text-align: justify">
+        <h2>Design als Anfrage senden:</h2>
+        <h5>Win antworten Ihnen innerhalb 24 Stunden. Sollten Sie in dieser Zeit nichts von uns hören so prüfen Sie bitte Ihren Spam Ordner. Gerne können Sie uns auch direkt anrufen
+        </h5>
+       <p>Tel: 0151 22 00 3618</p>
+    </div>
+    <mat-form-field class="full-width">
+        <input matInput type="text" placeholder="Name" value="" [(ngModel)]="this.inputValues.name">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <input matInput type="email" placeholder="Ihre E-Mailadresse. Sie erhalten eine Kopie" value="" [(ngModel)]="this.inputValues.email">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <input matInput type="number" placeholder="Telefonnummer für Rückruf" value="" [(ngModel)]="this.inputValues.phone">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <textarea matInput type="text" placeholder="Nachricht" value=""
+            [(ngModel)]="this.inputValues.message"></textarea>
+    </mat-form-field>
+
+    <p *ngIf="this.orderWarningLabel" style="color: red;">{{this.orderWarningLabel}}</p>
+    <p *ngIf="this.orderSuccessLabel" style="color: green;">{{this.orderSuccessLabel}}</p>
+
+    <div style="display: flex; justify-content:space-around;">
+        <button mat-raised-button style="width:100%" color="primary" (click)="confirmDialog()">Unverbindlich an uns senden</button>
+    </div>
+</div>
