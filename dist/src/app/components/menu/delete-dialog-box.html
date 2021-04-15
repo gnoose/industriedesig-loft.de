@@ -5,7 +5,7 @@
     <h3>Möchten Sie dieses Projekt löschen?</h3>
     <p *ngIf="data['scope'].uiService.deleteStatus" style="color: green;">{{data['scope'].uiService.deleteStatus}}</p>
     <br>
-
+    
     <div style="display: flex; justify-content:space-around;">
         <button mat-raised-button color="primary" (click)="confirmDialog()">Ja</button>
         <button mat-raised-button color="primary" (click)="closeDialog()">Nein</button>
