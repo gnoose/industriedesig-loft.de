@@ -36,6 +36,7 @@ export class UiService {
     return new Promise((resolve) => {
       this.projectSubject.subscribe(e => {
         let projects = this.genericProjects.concat(this.data["Projects"]);
+        console.log(projects)
         for (let i in projects) {
           if (projects[i].name === e) {
             resolve(projects[i]);
@@ -159,6 +160,7 @@ export class UiService {
   }
 
   public loadProject(value) {
+    console.log(value)
     if (!value.isSaved) this.isSaved = false;
     const properties = JSON.parse(value.JSON);
     this.currentProjectName = properties.name;
@@ -214,17 +216,19 @@ export class UiService {
   }
 
   public async init3D() {
-    return new Promise((resolve, reject) => {
+    console.log("Load 3D")
+    return new Promise<void>((resolve, reject) => {
       this.projectService.init3D().then(() => {
         this.php.getGenericProjectsTable().then(genericData => {
           this.genericProjects = genericData;
           this.php.getDatasFromDB().then(data => {
             this.data = data;
-            resolve();
+            
             this.projectService.setMaterials(this.data["Materials"]);
             this.initProjectByID().then((plm) => {
               this.loadProject(plm)
             })
+            resolve();
           });
         });
       });

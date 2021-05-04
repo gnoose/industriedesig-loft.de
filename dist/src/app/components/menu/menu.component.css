@@ -13,7 +13,8 @@
   z-index: 2;
   position: absolute;
   width: 300px;
-  height: calc(80% - 42px);
+  /* height: calc(80% - 42px); */
+  height: 68vh;
   top: 5px;
   right: 5px;
   overflow-y: scroll;
@@ -24,7 +25,8 @@
   width: 300px;
   bottom: 7px;
   right: 5px;
-  height: calc(20% - 38px);
+  /* height: calc(20% - 38px); */
+  height: calc(32vh - 54px);
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 2;
@@ -35,7 +37,8 @@
   width: 300px;
   top: 65px;
   left: 5px;
-  height: calc(50% - 95px);
+  /* height: calc(50% - 95px); */
+  height: 42vh;
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 2;
@@ -45,7 +48,8 @@
   width: 300px;
   top: 5px;
   left: 5px;
-  height: 25px;
+  /* height: 25px; */
+  height: 38px;
   overflow-y: hidden;
   overflow-x: hidden;
   z-index: 2;
@@ -59,7 +63,8 @@
   width: 300px;
   bottom: 7px;
   left: 5px;
-  height: calc(50% - 44px);
+  /* height: calc(50% - 44px); */
+  height: calc(58vh - 116px);
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 2;
@@ -586,4 +591,12 @@ h5 {
     bottom: auto;
     left: 20.5%;
   }
+}
+
+.top-containter {
+  display: flex;
+  justify-content: center;
+}
+.loginBtn {
+  margin:.1rem
 }

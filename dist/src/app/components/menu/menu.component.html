@@ -10,12 +10,18 @@
       <br>
     </ng-container>
     <ng-container *ngIf="!currentSiggnedUser">
-      <button mat-raised-button color="primary" style="position:absolute; top:10px; right:124px;" (click)="login()">Anmelden</button>
-      <button mat-raised-button color="primary" style="position:absolute; top:10px; right:2px; padding-left: 10px; padding-right: 10px;" (click)="showVideoTutorial()">Videoanleitung</button>
-      <br>
+      <div class="top-containter">
+        <button mat-raised-button color="primary" class="loginBtn" (click)="login()">Anmelden</button>
+        <button mat-raised-button color="primary" class="loginBtn" (click)="showVideoTutorial()">Videoanleitung</button>
+        <br>
+      </div>
     </ng-container>
 
-    <h4>Unsere Klassiker:</h4>
+    <mat-card-header>
+      <mat-card-title>
+        Unsere Klassiker:
+      </mat-card-title>
+    </mat-card-header>
     <mat-form-field class="full-width">
       <mat-label>Projektliste auswählen</mat-label>
       <mat-select [(value)]="selectedProjectsList">
@@ -36,7 +42,11 @@
 
 
 <mat-card *ngIf="this.uiService.selectedPlate && this.uiService.selectedLegs" class="bottom-left" id="user-projects">
-  <h4>Konfiguration für später speichern:</h4>
+  <mat-card-header>
+    <mat-card-title>
+      Konfiguration für später speichern:
+    </mat-card-title>
+  </mat-card-header>
   <mat-form-field class="example-full-width">
     <input #projectName matInput placeholder="Eindeutige Bezeichnung vergeben" style="width: 160px;" (input)="setProjectName($event.target.value)">
   </mat-form-field>
@@ -60,7 +70,11 @@
 
 <mat-card class="middle-right" style="direction: rtl;" *ngIf="this.uiService.selectedPlate" id="plates-view">
   <mat-card-content style="direction: ltr;">
-    <h4>Tischplatte - Eigenschaften festlegen:</h4>
+    <mat-card-header>
+      <mat-card-title>
+        Tischplatte - Eigenschaften festlegen:
+      </mat-card-title>
+    </mat-card-header>
     <mat-select style="max-height: 540px !important" [(value)]="this.uiService.selectedPlateName">
       <mat-option *ngFor="let frt of this.uiService.availablePlates" class="lists" [value]="frt.name" (click)="this.uiService.load('plate', frt)">
         <img class="small-thumb" src="{{frt.thumbnailPath}}"> {{frt.name}}
@@ -115,7 +129,11 @@
 
 <mat-card class="bottom-right" style="direction: rtl;" *ngIf="this.uiService.selectedLegs" id="legs-view">
   <mat-card-content style="direction: ltr;">
-    <h4>Gestell - Eigenschaften festlegen:</h4>
+    <mat-card-header>
+      <mat-card-title>
+        Gestell - Eigenschaften festlegen:
+      </mat-card-title>
+    </mat-card-header>
     <mat-select style="max-height: 540px !important" [(value)]="this.uiService.selectedLegsName">
       <mat-option *ngFor="let frb of this.uiService.availableLegs" class="lists" [value]="frb.name" (click)="this.uiService.load('leg', frb)">
         <img class="small-thumb" src="{{frb.thumbnailPath}}"> {{frb.name}}

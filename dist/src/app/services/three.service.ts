@@ -165,6 +165,7 @@ export class ThreeService {
   public loadObject(type, value) {
     // const path = value.modelPath.replace("https://www.industriedesign-loft.de/table-configurator", "");
     const path = this._basePath + value.modelPath;
+    console.log(value)
     if (type === "leg") {
       this._legHolder.traverse(child => {
         this._legHolder.remove(child);
@@ -197,9 +198,8 @@ export class ThreeService {
       this._camera.updateProjectionMatrix();
       this._renderer.setSize(window.innerWidth, window.innerHeight);
     }
-
     
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       const path = this._basePath + "assets/cubemap/";
       var format = '.jpg';
       var urls = [
