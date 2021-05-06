@@ -124,7 +124,7 @@
 
         $mailMessageToCustomer .= 'Bitte benutzen Sie dieses Passwort, um sich in Ihrem Konto anzumelden: <strong>' . $pass . '</strong>';
 
-        $mailMessageToCustomer .= '<br><br><p style="width: 100% ;text-align:left">Diese E-Mail wurde automatisch vom Server erstellt:' . $_SERVER['SERVER_NAME'] . '</p>';
+        $mailMessageToCustomer .= '<br><br><p style="width: 100% ;text-align:left">Diese E-Mail wurde automatisch erstellt: ' . $_SERVER['SERVER_NAME'] . '</p>';
 
         $mailMessageToCustomer .= '</body></html>';
 
